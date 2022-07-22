@@ -1,0 +1,9 @@
+[submodule ".config/qtile"]
+	path = .config/qtile
+	url = https://github.com/Eichi-Arakaki/qtile
+[submodule ".config/kitty"]
+	path = .config/kitty
+	url = https://github.com/Eichi-Arakaki/kitty
+[submodule ".config/starship"]
+	path = .config/starship
+	url = https://github.com/Eichi-Arakaki/starship
