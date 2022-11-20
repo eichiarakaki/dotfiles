@@ -57,7 +57,7 @@ horizontal_padding = 16
 # Set to 0 to disable.
 frame_width = 1
 # Defines color of the frame around the notification window.
-frame_color = "#3A3A3A"
+frame_color = "#243247"
 # Define a color for the separator.
 # possible values are:
 #  * auto: dunst tries to find a color fitting to the background;
@@ -235,21 +235,21 @@ mouse_right_click = close_current
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#1C1C1C"
-    foreground = "#D2D2D2"
+    background = "#0B0E14"
+    foreground = "#ffffff"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     # icon = /home/eiji/.config/dunst/icons/Settings.png
 
 [urgency_normal]
-    background = "#1C1C1C"
-    foreground = "#D2D2D2"
+    background = "#0B0E14"
+    foreground = "#ffffff"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     # icon = /home/eiji/.config/dunst/icons/Settings.png
 
 [urgency_critical]
-    background = "#1C1C1C"
+    background = "#0B0E14"
     foreground = "#CB6666"
     frame_color = "#CB6666"
     timeout = 5
