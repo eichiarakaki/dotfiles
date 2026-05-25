@@ -6,6 +6,8 @@ let
 in
 {
   home.sessionVariables = {
+    MOZ_GTK_TITLEBAR_DECORATION = "client";
+
     EDITOR = "nvim";
 
     EXTERNAL_HDD_UUID  = externalHDDUUID;

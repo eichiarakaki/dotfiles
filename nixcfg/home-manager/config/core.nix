@@ -18,6 +18,7 @@
     unzip
     ffmpeg
     htop
+    fastfetch
     btop
     pavucontrol
   ];

@@ -1,10 +1,11 @@
 { pkgs, ... }:
 
 {
-  # River es un compositor Wayland puro — no necesitamos Xserver
-  programs.river = {
-    enable      = true;
-    xwayland.enable = true; # compatibilidad para apps X11 legacy
+  # River — Wayland compositor
+  programs.river-classic = {
+    enable          = true;
+    xwayland.enable = true;
+    package         = pkgs.river;
   };
 
   services.displayManager.ly.enable = true;
@@ -21,20 +22,21 @@
 
   programs.dconf.enable = true;
 
-  services.logind = {
-    lidSwitch              = "ignore";
-    lidSwitchDocked        = "ignore";
-    lidSwitchExternalPower = "ignore";
+  # Renamed options in nixos-unstable
+  services.logind.settings.Login = {
+    HandleLidSwitch              = "ignore";
+    HandleLidSwitchDocked        = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
   };
 
-  # Variables de entorno Wayland
+  # Wayland session variables
   environment.sessionVariables = {
-    NIXOS_OZONE_WL  = "1";   # apps Electron usen Wayland
-    MOZ_ENABLE_WAYLAND = "1"; # Firefox nativo Wayland
-    QT_QPA_PLATFORM = "wayland";
-    SDL_VIDEODRIVER = "wayland";
-    CLUTTER_BACKEND = "wayland";
-    XDG_SESSION_TYPE = "wayland";
+    NIXOS_OZONE_WL      = "1";
+    MOZ_ENABLE_WAYLAND  = "1";
+    QT_QPA_PLATFORM     = "wayland";
+    SDL_VIDEODRIVER     = "wayland";
+    CLUTTER_BACKEND     = "wayland";
+    XDG_SESSION_TYPE    = "wayland";
     XDG_CURRENT_DESKTOP = "river";
   };
 }

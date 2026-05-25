@@ -11,6 +11,7 @@
     ./config/river.nix
     ./config/foot.nix
     ./config/tofi.nix
+    ./config/emacs.nix
   ];
 
   home.username      = "ares";
