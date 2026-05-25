@@ -11,7 +11,7 @@
     firefox
 
     # Terminal
-    alacritty
+    foot
 
     # Filesystem
     btrfs-progs
@@ -29,16 +29,19 @@
 
     # OpenGL
     libGLU
-    libglibutil
 
     # Vulkan
     vulkan-loader
     vulkan-tools
 
-    # Notifications
-    dunst
+    # Notifications (compatible Wayland)
+    mako
 
-    # X11 init (útil para debug)
-    xorg.xinit
+    # River utilities
+    wlr-randr    # gestión de outputs (equivalente a xrandr)
+    wl-clipboard # wl-copy / wl-paste
+    grim         # screenshots
+    slurp        # selección de región para grim
+    tofi         # app launcher Wayland (alternativa a dmenu/rofi)
   ];
 }

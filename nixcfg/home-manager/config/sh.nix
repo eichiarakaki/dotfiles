@@ -19,7 +19,7 @@
       gl  = "git log --oneline --graph";
 
       # System
-      update = "sudo nixos-rebuild switch --flake ~/nixos#quant";
+      update = "sudo nixos-rebuild switch --flake ~/nixcfg/nixos#quant";
       hm     = "home-manager switch --flake ~/nixcfg#ares@quant";
 
       # Utils

@@ -19,9 +19,6 @@
     ffmpeg
     htop
     btop
-    neofetch
-    scrot
-    xclip
     pavucontrol
   ];
 }

@@ -18,7 +18,7 @@
   };
 
   services.xserver.xkb = {
-    layout  = "us";
-    variant = "";
+    layout  = "us,es";
+    options = "grp:win_space_toggle";
   };
 }

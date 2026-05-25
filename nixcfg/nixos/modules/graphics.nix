@@ -34,16 +34,17 @@
         enableOffloadCmd = true; # agrega el comando `nvidia-offload`
       };
 
-      # sync.enable = false; # NO usar sync — causa el crash de pantalla
-
       intelBusId  = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
 
+  # Requerido también en Wayland para que el driver NVIDIA sea cargado
   services.xserver.videoDrivers = [ "nvidia" ];
 
   environment.variables = {
     LIBGL_DRIVERS_PATH = "/run/opengl-driver/lib/dri";
+    # Necesario para NVIDIA + wlroots (River): evita crash de cursores HW
+    WLR_NO_HARDWARE_CURSORS = "1";
   };
 }
