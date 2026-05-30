@@ -47,6 +47,8 @@ in
       # ------------------------------------------------------------ #
       riverctl map normal ${mod} Return spawn 'foot'
       riverctl map normal ${mod} D spawn 'tofi-run | xargs riverctl spawn'
+      riverctl map normal ${mod} N spawn 'pkill gammastep; gammastep -O 3300'
+      riverctl map normal ${mod}+Shift N spawn 'pkill gammastep;'
 
       # ------------------------------------------------------------ #
       # Close / window control
@@ -169,7 +171,11 @@ in
       # ------------------------------------------------------------ #
       # Appearance
       # ------------------------------------------------------------ #
-      riverctl background-color 0x111111
+      riverctl background-color 0x000000
+
+      riverctl border-color-focused 0x2a2a2a
+      riverctl border-color-unfocused 0x111111
+      riverctl border-color-urgent 0xb04a4a
 
       # ------------------------------------------------------------ #
       # Autostart

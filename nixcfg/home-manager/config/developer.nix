@@ -1,13 +1,6 @@
 { pkgs, ... }:
 
 {
-  programs.neovim = {
-    enable        = true;
-    defaultEditor = true;
-    viAlias       = true;
-    vimAlias      = true;
-  };
-
   programs.git = {
     enable = true;
     settings.user.name   = "Eichi Arakaki";
@@ -20,6 +13,7 @@
 
   home.packages = with pkgs; [
     vscode
+    tmux
     jetbrains.goland
     jetbrains.rust-rover
     lazygit

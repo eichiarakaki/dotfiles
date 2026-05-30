@@ -8,7 +8,7 @@ in
   home.sessionVariables = {
     MOZ_GTK_TITLEBAR_DECORATION = "client";
 
-    EDITOR = "nvim";
+    EDITOR = "vim";
 
     EXTERNAL_HDD_UUID  = externalHDDUUID;
     EXTERNAL_HDD_MOUNT = externalHDDMount;
