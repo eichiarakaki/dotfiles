@@ -10,7 +10,8 @@
     ./config/wayland.nix
     ./config/river.nix
     ./config/foot.nix
-    ./config/vim.nix
+    # ./config/vim.nix
+    ./confing/helix.nix
     ./config/tofi.nix
     ./config/emacs.nix
   ];
