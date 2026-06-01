@@ -2,11 +2,15 @@
 
 {
   # River — Wayland compositor
-  programs.river-classic = {
-    enable          = true;
-    xwayland.enable = true;
-    package         = pkgs.river;
-  };
+  #programs.river-classic = {
+  #  enable          = true;
+  #  xwayland.enable = true;
+  #  package         = pkgs.river;
+  #};
+  
+  programs.dwl.enable = true;
+  programs.dwl.package = pkgs.dwl;
+  programs.xwayland.enable = true;
 
   services.displayManager.ly.enable = true;
 
@@ -37,6 +41,6 @@
     SDL_VIDEODRIVER     = "wayland";
     CLUTTER_BACKEND     = "wayland";
     XDG_SESSION_TYPE    = "wayland";
-    XDG_CURRENT_DESKTOP = "river";
+    # XDG_CURRENT_DESKTOP = "river";
   };
 }

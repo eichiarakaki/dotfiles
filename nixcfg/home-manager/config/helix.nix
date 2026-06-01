@@ -23,7 +23,13 @@
         bufferline = "never";
         rulers = [ ];
 
+        soft-wrap = {
+          enable = true;
+          wrap-indicator = "";
+        };
+
         clipboard-provider = "wayland";
+        default-yank-register = "+";
 
         cursor-shape = {
           insert = "bar";
@@ -53,6 +59,10 @@
       quant-minimal = {
         "ui.background" = {
           bg = "black";
+        };
+
+        "ui.selection" = {
+          bg = "#1a1a1a";
         };
 
         "ui.text" = {

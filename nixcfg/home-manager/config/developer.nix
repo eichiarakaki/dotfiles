@@ -13,7 +13,8 @@
 
   home.packages = with pkgs; [
     vscode
-    tmux
+    zellij
+    #tmux
     jetbrains.goland
     jetbrains.rust-rover
     lazygit

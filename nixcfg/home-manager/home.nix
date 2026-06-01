@@ -8,10 +8,11 @@
     ./config/developer.nix
     ./config/env.nix
     ./config/wayland.nix
-    ./config/river.nix
+    #./config/river.nix
+    ./config/dwl.nix
     ./config/foot.nix
     # ./config/vim.nix
-    ./confing/helix.nix
+    ./config/helix.nix
     ./config/tofi.nix
     ./config/emacs.nix
   ];

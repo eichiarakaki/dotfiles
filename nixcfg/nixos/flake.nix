@@ -2,14 +2,30 @@
   description = "quant NixOS configuration";
 
   inputs = {
-    nixpkgs.url          = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, ... }:
+  let
+    system = "x86_64-linux";
+
+    overlays = [
+      (import ./overlays/dwl.nix)
+    ];
+  in {
     nixosConfigurations.quant = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
+
+      specialArgs = {
+        inherit overlays;
+      };
+
       modules = [
+        {
+          nixpkgs.overlays = overlays;
+        }
+
         ./hosts/quant/default.nix
       ];
     };
