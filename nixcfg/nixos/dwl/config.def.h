@@ -24,13 +24,25 @@ static const int bypass_surface_visibility = 0;
 
 static const unsigned int borderpx = 1;
 
+/* Background of empty workspace */
+static const float rootcolor[] = COLOR(0x302c2bff);
 
-static const float rootcolor[]   = COLOR(0x222222ff);
-static const float bordercolor[] = COLOR(0x444444ff);
-static const float focuscolor[]  = COLOR(0x005577ff);
-static const float urgentcolor[] = COLOR(0xff0000ff);
+/* Inactive window border */
+static const float bordercolor[] = COLOR(0x3d3837ff);
 
-static const float fullscreen_bg[] = { 0.0, 0.0, 0.0, 1.0 };
+/* Focused window border */
+static const float focuscolor[] = COLOR(0x574B49ff);
+
+/* Urgent window border */
+static const float urgentcolor[] = COLOR(0xc65f5fff);
+
+/* Fullscreen background */
+static const float fullscreen_bg[] = {
+    0.145f, /* 25 / 255 */
+    0.133f, /* 22 / 255 */
+    0.129f, /* 21 / 255 */
+    1.0f
+};
 
 /* ------------------------------------------------------------
  * Tags
@@ -77,7 +89,8 @@ static const MonitorRule monrules[] = {
  * ------------------------------------------------------------ */
 
 static const struct xkb_rule_names xkb_rules = {
-	.options = NULL,
+    .layout = "us,es",
+    .options = "grp:win_space_toggle",
 };
 
 static const int repeat_rate = 50;

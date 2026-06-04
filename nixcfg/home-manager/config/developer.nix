@@ -12,12 +12,12 @@
   };
 
   home.packages = with pkgs; [
-    vscode
     zellij
+    zed-editor-fhs
     #tmux
-    jetbrains.goland
-    jetbrains.rust-rover
-    lazygit
-    jq
+    #jetbrains.goland
+    #jetbrains.rust-rover
+    #lazygit
+    #jq
   ];
 }

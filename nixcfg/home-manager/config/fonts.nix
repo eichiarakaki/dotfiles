@@ -14,7 +14,8 @@
     jetbrains-mono
     nerd-fonts.jetbrains-mono
 
-    # Iosevka
+    cascadia-code    # Iosevka
+
     iosevka
     nerd-fonts.iosevka
     nerd-fonts.iosevka-term

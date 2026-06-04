@@ -11,7 +11,7 @@
     firefox
 
     # Terminal
-    foot
+    #foot
 
     # Filesystem
     btrfs-progs

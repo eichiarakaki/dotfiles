@@ -6,6 +6,7 @@
     alsa.enable  = true;
     pulse.enable = true;
     jack.enable  = true;
+    wireplumber.enable = true;
 
     extraConfig.pipewire = {
       "99-disable-bell" = {

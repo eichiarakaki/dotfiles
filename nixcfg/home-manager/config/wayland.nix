@@ -2,13 +2,13 @@
 
 {
   # Screen locker — swaylock replaces i3lock under Wayland
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      color = "181818";
-      show-failed-attempts = true;
-    };
-  };
+  #programs.swaylock = {
+  #  enable = true;
+  #  settings = {
+  #    color = "181818";
+  #    show-failed-attempts = true;
+  #  };
+  #};
 
   # Clipboard manager — cliphist is the Wayland-native equivalent of clipmenu
   services.cliphist.enable = true;
@@ -33,6 +33,6 @@
   home.packages = with pkgs; [
     polkit_gnome
     wl-clipboard   # wl-copy / wl-paste (replaces xclip/xsel)
-    wlr-randr      # output management (replaces arandr)
+    #wlr-randr      # output management (replaces arandr)
   ];
 }

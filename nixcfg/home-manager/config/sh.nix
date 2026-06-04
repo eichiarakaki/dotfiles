@@ -1,48 +1,48 @@
 { pkgs, ... }:
+
 {
   programs.bash = {
     enable = true;
+
     shellAliases = {
       ".."  = "cd ..";
       "..." = "cd ../..";
-      ll    = "ls -lah";
-      la    = "ls -A";
-      gs    = "git status";
-      ga    = "git add";
-      gc    = "git commit";
-      gp    = "git push";
-      gl    = "git log --oneline --graph";
+
+      ll = "ls -lah";
+      la = "ls -A";
+
+      gs = "git status";
+      ga = "git add";
+      gc = "git commit";
+      gp = "git push";
+      gl = "git log --oneline --graph";
+
       update = "sudo nixos-rebuild switch --flake ~/nixcfg/nixos#quant";
       hm     = "home-manager switch --flake ~/nixcfg#ares@quant";
-      grep  = "grep --color=auto";
-      df    = "df -h";
-      du    = "du -sh";
+
+      grep = "grep --color=auto";
+      df   = "df -h";
+      du   = "du -sh";
     };
     bashrcExtra = ''
       set_prompt() {
         local reset='\[\e[0m\]'
-        local dim='\[\e[90m\]'
-        local white='\[\e[37m\]'
-        local dull_red='\[\e[38;5;131m\]'
 
-        local dir="$white\W"
-        local sep="$dim :"
-        local symbol="$dim > "
+        # blue = 728797
+        local blue='\[\e[38;2;114;135;151m\]'
 
-        local git_branch=""
-        if git rev-parse --is-inside-work-tree &>/dev/null 2>&1; then
-          local branch
-          branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-          git_branch="$dim[$white$branch$dim]"
-        fi
+        # yellow = d9b27c
+        local yellow='\[\e[38;2;217;178;124m\]'
 
-        local nix_tag=""
+        local nix_prefix=""
+
         if [[ -n "$IN_NIX_SHELL" ]]; then
-          nix_tag="$dull_red[nix]$dim "
+          nix_prefix="''${blue}(nix)''${reset} "
         fi
 
-        PS1="$nix_tag$dir$git_branch$symbol$reset"
+        PS1="''${nix_prefix}''${blue}\W''${reset} ''${yellow}|''${reset} "
       }
+
       PROMPT_COMMAND=set_prompt
     '';
   };

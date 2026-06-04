@@ -1,12 +1,13 @@
 { pkgs, ... }:
+
 {
   xdg.configFile."foot/foot.ini".text = ''
     [main]
-    font        = Iosevka Nerd Font:size=13
-    font-bold   = Iosevka Nerd Font:style=Bold:size=13
-    font-italic = Iosevka Nerd Font:style=Italic:size=13
+    font        = Jetbrains Mono:size=12
+    font-bold   = Jetbrains Mono:style=Bold:size=12
+    font-italic = Jetbrains Mono:style=Italic:size=12
     shell       = /home/ares/.nix-profile/bin/bash
-    pad         = 6x6
+    pad         = 13x13
 
     [mouse]
     hide-when-typing = yes
@@ -17,29 +18,39 @@
     [tweak]
     grapheme-shaping = no
 
+    # ------------------------------------------------------------
+    # Quant Minimal
+    # ------------------------------------------------------------
+
     [colors-dark]
-    background           = 0d0d0d
-    foreground           = c0c0c0
-    selection-background = 252525
-    selection-foreground = c0c0c0
 
-    regular0 = 0d0d0d
-    regular1 = 7a3030
-    regular2 = 4a6a4a
-    regular3 = 686868
-    regular4 = 4a6a88
-    regular5 = 686868
-    regular6 = 4a7a7a
-    regular7 = c0c0c0
+    # Base
+    background = 252221
+    foreground = c8baa4
 
-    bright0  = 2a2a2a
-    bright1  = 8a3838
-    bright2  = 5a7a5a
-    bright3  = 888888
-    bright4  = 5a7a98
-    bright5  = 888888
-    bright6  = 5a8a8a
-    bright7  = d8d8d8
+    # Selection
+    selection-background = 3d3837
+    selection-foreground = d1c6b4
+
+    # ANSI normal colors
+    regular0 = 3d3837
+    regular1 = c65f5f
+    regular2 = 859e82
+    regular3 = d9b27c
+    regular4 = 829e9b
+    regular5 = 998396
+    regular6 = ab9382
+    regular7 = c8baa4
+
+    # ANSI bright colors
+    bright0 = 413c3a
+    bright1 = d07a7a
+    bright2 = 9cb598
+    bright3 = e4c18c
+    bright4 = 96b4b0
+    bright5 = ad97aa
+    bright6 = bba595
+    bright7 = d1c6b4
   '';
 
   home.packages = [ pkgs.foot ];

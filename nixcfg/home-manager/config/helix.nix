@@ -3,14 +3,14 @@
 {
   home.packages = with pkgs; [
     helix
-    # wl-clipboard
+    wl-clipboard
   ];
 
   programs.helix = {
     enable = true;
 
     settings = {
-      theme = "quant-minimal";
+      theme = "quant";
 
       editor = {
         line-number = "relative";
@@ -38,7 +38,7 @@
         };
 
         statusline = {
-          left = [ "mode" "file-name" ];
+          left = [ "file-name" ];
           center = [ ];
           right = [ ];
         };
@@ -55,83 +55,191 @@
       };
     };
 
-    themes = {
-      quant-minimal = {
-        "ui.background" = {
-          bg = "black";
-        };
+    themes.quant = {
+      # ------------------------------------------------------------
+      # UI
+      # ------------------------------------------------------------
 
-        "ui.selection" = {
-          bg = "#1a1a1a";
-        };
+      "ui.background" = {
+        bg = "#252221";
+      };
 
-        "ui.text" = {
-          fg = "#d8d8d8";
-        };
+      "ui.text" = {
+        fg = "#c8baa4";
+      };
 
-        "ui.cursor" = {
-          fg = "black";
-          bg = "#d8d8d8";
-        };
+      "ui.text.focus" = {
+        fg = "#d1c6b4";
+      };
 
-        "ui.cursorline" = {
-          bg = "#0a0a0a";
-        };
+      "ui.selection" = {
+        bg = "#3d3837";
+      };
 
-        "ui.linenr" = {
-          fg = "#444444";
-        };
+      "ui.cursor" = {
+        fg = "#252221";
+        bg = "#d9b27c";
+      };
 
-        "ui.linenr.selected" = {
-          fg = "#888888";
-        };
+      "ui.cursor.match" = {
+        fg = "#252221";
+        bg = "#998396";
+      };
 
-        "ui.statusline" = {
-          fg = "#404040";
-          bg = "black";
-        };
+      "ui.cursorline" = {
+        bg = "#262322";
+      };
 
-        "ui.statusline.inactive" = {
-          fg = "#303030";
-          bg = "black";
-        };
+      "ui.linenr" = {
+        fg = "#3d3837";
+      };
 
-        "comment" = {
-          fg = "#555555";
-          modifiers = [ "italic" ];
-        };
+      "ui.linenr.selected" = {
+        fg = "#beae94";
+      };
 
-        "keyword" = {
-          fg = "#6f86a8";
-        };
+      "ui.statusline" = {
+        fg = "#c8baa4";
+        bg = "#302c2b";
+      };
 
-        "type" = {
-          fg = "#8d739c";
-        };
+      "ui.statusline.inactive" = {
+        fg = "#ab9382";
+        bg = "#252221";
+      };
 
-        "string" = {
-          fg = "#7a8f6b";
-        };
+      "ui.window" = {
+        fg = "#3d3837";
+      };
 
-        "constant.numeric" = {
-          fg = "#b59a5c";
-        };
+      "ui.menu" = {
+        fg = "#c8baa4";
+        bg = "#302c2b";
+      };
 
-        "warning" = {
-          fg = "#b59a5c";
-        };
+      "ui.popup" = {
+        fg = "#c8baa4";
+        bg = "#302c2b";
+      };
 
-        "error" = {
-          fg = "#b04a4a";
-        };
+      "ui.help" = {
+        fg = "#c8baa4";
+        bg = "#302c2b";
+      };
 
-        "function" = {
-          fg = "#d8d8d8";
-        };
+      "ui.virtual" = {
+        fg = "#ab9382";
+      };
 
-        "variable" = {
-          fg = "#d8d8d8";
-        };
+      # Required by Helix
+      "ui.cursor.primary" = {
+        fg = "#252221";
+        bg = "#d9b27c";
+      };
+
+      "ui.selection.primary" = {
+        bg = "#3d3837";
+      };
+
+      # ------------------------------------------------------------
+      # Syntax
+      # ------------------------------------------------------------
+
+      "comment" = {
+        fg = "#3d3837";
+        modifiers = [ "italic" ];
+      };
+
+      "keyword" = {
+        fg = "#d9b27c";
+      };
+
+      "keyword.control" = {
+        fg = "#d9b27c";
+      };
+
+      "operator" = {
+        fg = "#829e9b";
+      };
+
+      "namespace" = {
+        fg = "#829e9b";
+      };
+
+      "type" = {
+        fg = "#998396";
+      };
+
+      "type.builtin" = {
+        fg = "#998396";
+      };
+
+      "special" = {
+        fg = "#d08b65";
+      };
+
+      "string" = {
+        fg = "#859e82";
+      };
+
+      "constant" = {
+        fg = "#ab9382";
+      };
+
+      "constant.numeric" = {
+        fg = "#ab9382";
+      };
+
+      "constant.builtin" = {
+        fg = "#ab9382";
+      };
+
+      "function" = {
+        fg = "#cdc0ad";
+      };
+
+      "function.builtin" = {
+        fg = "#cdc0ad";
+      };
+
+      "variable" = {
+        fg = "#c8baa4";
+      };
+
+      "variable.parameter" = {
+        fg = "#beae94";
+      };
+
+      "label" = {
+        fg = "#d08b65";
+      };
+
+      "attribute" = {
+        fg = "#829e9b";
+      };
+
+      "tag" = {
+        fg = "#998396";
+      };
+
+      # ------------------------------------------------------------
+      # Diagnostics
+      # ------------------------------------------------------------
+
+      "hint" = {
+        fg = "#829e9b";
+      };
+
+      "info" = {
+        fg = "#728797";
+      };
+
+      "warning" = {
+        fg = "#d08b65";
+      };
+
+      "error" = {
+        fg = "#c65f5f";
       };
     };
   };

@@ -8,13 +8,17 @@
     ./config/developer.nix
     ./config/env.nix
     ./config/wayland.nix
+    ./config/waybar.nix
+    ./config/fuzzel.nix
     #./config/river.nix
-    ./config/dwl.nix
-    ./config/foot.nix
+    #./config/dwl.nix
+    #./config/foot.nix
     # ./config/vim.nix
     ./config/helix.nix
-    ./config/tofi.nix
-    ./config/emacs.nix
+    ./config/ghostty.nix
+    #./config/tofi.nix
+    #./config/emacs.nix
+    ./config/niri.nix
   ];
 
   home.username      = "ares";
