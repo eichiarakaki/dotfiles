@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     # Communication
-    discord
+    vesktop
 
     # Media
     mpv

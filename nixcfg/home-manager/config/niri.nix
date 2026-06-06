@@ -30,7 +30,8 @@
     fuzzel       # launcher (Mod+D)
     swaylock     # screen lock (Super+Alt+L)
     brightnessctl
-    # ghostty    # terminal (Mod+T) - uncomment if you use it
+
+    gammastep
   ];
 
   # ----------------------------
