@@ -10,9 +10,6 @@
     # Browser
     firefox
 
-    # Terminal
-    #foot
-
     # Filesystem
     btrfs-progs
     exfatprogs
@@ -20,18 +17,17 @@
     udiskie
     udisks2
 
-    # D-Bus / desktop infra
+    # Desktop
     dbus
     dconf
-
-    # Audio
     pipewire
 
-    # OpenGL
+    # Graphics
     libGLU
-
-    # Vulkan
     vulkan-loader
     vulkan-tools
+
+    pcmanfm
+    lxsession
   ];
 }

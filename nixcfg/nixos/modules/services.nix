@@ -8,7 +8,7 @@
     allowReboot = true;
   };
 
-  services.flatpak.enable = true;
+  #services.flatpak.enable = true;
   services.dbus.enable = true;
   #services.gvfs.enable = true;
   services.udisks2.enable = true;

@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 {
+    # Niri-specific packages + config
+  imports = [
+    ./niri.nix          # Your existing niri config
+    ./waybar.nix        # Waybar for niri
+    ./fuzzel.nix        # Launcher
+  ];
+    
   home.packages = with pkgs; [
     # Notifications
     mako
@@ -13,24 +20,13 @@
     pavucontrol
     playerctl
     # Navigation
-    zoxide
     fd
     ripgrep
-    eza
-    bat
-    # Utilities
+       # Utilities
     jq
     tree
-    # Core dev workflow
-    git
-    tmux
 
-    # === Added for Niri binds & startup ===
-    waybar
-    fuzzel       # launcher (Mod+D)
     swaylock     # screen lock (Super+Alt+L)
-    brightnessctl
-
     gammastep
   ];
 
@@ -48,26 +44,7 @@
     };
   };
 
-  # ----------------------------
-  # CLI tooling
-  # ----------------------------
-  programs.zoxide.enable = true;
-  programs.bat.enable = true;
-  programs.eza.enable = true;
-  #programs.git.enable = true;
-
-  home.pointerCursor = {
-    package = pkgs.adwaita-icon-theme;
-    name = "Adwaita";
-    size = 24;
-    gtk.enable = true;
-    x11.enable = true;
-  };
-
-  home.sessionVariables = {
-    XCURSOR_SIZE = "24";
-  };
-
+  
   # ============================================================
   # NIRI WINDOW MANAGER - Configuración completa (declarativa)
   # ============================================================
@@ -81,6 +58,12 @@
 // Find the full list of options on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Input
 prefer-no-csd
+
+gestures {
+    hot-corners {
+        off
+    }
+}
 
 input {
     keyboard {
@@ -248,7 +231,7 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        off
+        on
         width 1
         active-color "#ffc87f"
         inactive-color "#505050"
@@ -263,9 +246,10 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        // on
+        off
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
+        draw-behind-window false
         //
         // Note that niri has no way of knowing about the CSD window corner
         // radius. It has to assume that windows have square corners, leading to
@@ -286,7 +270,7 @@ layout {
         // Spread expands the shadow.
         spread 5
         // Offset moves the shadow relative to the window.
-        offset x=0 y=5
+        offset x=0 y=0
         // You can also change the shadow color and opacity.
         color "#0007"
     }
@@ -377,9 +361,10 @@ window-rule {
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 1
+window-rule {
+    geometry-corner-radius 5
     clip-to-geometry true
+    draw-border-with-background false
 }
 
 binds {
@@ -399,6 +384,9 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+N { spawn "pkill gammastep; gammastep -O 3500"; }
+    Mod+Shift+N hotkey-overlay-title="Toggle gammastep" { spawn "pkill gammastep"; }
+    
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     Mod+S {

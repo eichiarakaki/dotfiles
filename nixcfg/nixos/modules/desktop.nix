@@ -1,62 +1,62 @@
 { pkgs, ... }:
 
 {
-  # River — Wayland compositor
-  #programs.river-classic = {
-  #  enable          = true;
-  #  xwayland.enable = true;
-  #  package         = pkgs.river;
-  #};
+  ### =============================================
+  ### DISPLAY MANAGER
+  ### =============================================
+  services.displayManager.ly.enable = true;
 
-  # dwl
-  #programs.dwl.enable = true;
-  #programs.dwl.package = pkgs.dwl;
+  ### =============================================
+  ### COMPOSITORS / WINDOW MANAGERS
+  ### =============================================
+  # Enable only what you want to use.
+  # Both can be enabled at the same time if you want to choose at login with Ly.
 
-  # Niri
-  programs.niri.enable = true;
+  # --- Niri (Wayland) ---
+  #programs.niri.enable = true;
+
+  # --- i3 (X11) ---
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+    windowManager.i3.package = pkgs.i3;
+  };
 
   programs.xwayland.enable = true;
 
-  services.displayManager.ly.enable = true;
-
-  #xdg.portal = {
-  #  enable       = true;
-  #  wlr.enable   = true;
-  #  extraPortals = [
-  #    pkgs.xdg-desktop-portal-gtk
-  #    pkgs.xdg-desktop-portal-wlr
-  #  ];
-  #  config.common.default = "wlr";
-  #};
+  ### =============================================
+  ### PORTALS
+  ### =============================================
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-gnome
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      #xdg-desktop-portal-gnome
     ];
-    config = {
-      common.default = [ "gnome" ];
-    };
+    config.common.default = [ "gnome" ];
   };
 
   programs.dconf.enable = true;
 
-  # Renamed options in nixos-unstable
-  services.logind.settings.Login = {
-    HandleLidSwitch              = "ignore";
-    HandleLidSwitchDocked        = "ignore";
-    HandleLidSwitchExternalPower = "ignore";
+  ### =============================================
+  ### WAYLAND / SESSION VARIABLES
+  ### =============================================
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
+    # XDG_CURRENT_DESKTOP will be set automatically by the compositor
   };
 
-  # Wayland session variables
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL      = "1";
-    MOZ_ENABLE_WAYLAND  = "1";
-    QT_QPA_PLATFORM     = "wayland";
-    SDL_VIDEODRIVER     = "wayland";
-    #CLUTTER_BACKEND     = "wayland";
-    XDG_SESSION_TYPE    = "wayland";
-    XDG_CURRENT_DESKTOP = "niri";
+  ### =============================================
+  ### LOGIN BEHAVIOR
+  ### =============================================
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
   };
 }
