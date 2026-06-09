@@ -1,75 +1,72 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
+let
+  # Change only this line to switch themes.
+  theme = ./kak/themes/solarized-osaka.kak;
+in
 {
   programs.kakoune = {
     enable = true;
 
     config = {
-      # Número de líneas relativas
       numberLines = {
         enable = true;
         relative = true;
       };
 
-      # Mostrar matching de paréntesis
       showMatching = true;
 
-      # Scrolloff (espacio alrededor del cursor)
       scrollOff = {
         columns = 5;
         lines = 3;
       };
 
-      # Tabulación
       tabStop = 4;
       indentWidth = 4;
-
     };
 
-    # ======================== TEMA GRUBER DARKER ========================
     extraConfig = ''
-      # Gruber Darker theme for Kakoune
-      # Based on the Emacs Gruber Darker theme
+      source "${theme}"
 
-      face global Default            rgb:e4e4e4,rgb:181818
-      face global PrimarySelection   rgb:181818,rgb:ffdd33
-      face global SecondarySelection rgb:181818,rgb:52494e
-      face global PrimaryCursor      rgb:181818,rgb:e4e4e4
-      face global SecondaryCursor    rgb:181818,rgb:52494e
-      face global PrimaryCursorEol   rgb:181818,rgb:e4e4e4
-      face global SecondaryCursorEol rgb:181818,rgb:52494e
+      # Copy every normal yank to the system clipboard.
+      #
+      # Wayland: wl-copy
+      # X11 fallback: xclip
+      #
+      # Important:
+      # - Do not remap `y`; keep Kakoune's native yank behavior.
+      # - xclip is backgrounded because otherwise it can block Kakoune.
+      define-command -hidden copy-yank-to-system-clipboard %{
+        nop %sh{
+          [ -n "''${kak_main_reg_dquote:-}" ] || exit 0
 
-      face global LineNumbers        rgb:52494e
-      face global LineNumberCursor   rgb:e4e4e4
-      face global LineNumbersWrapped rgb:52494e
+          if [ -n "''${WAYLAND_DISPLAY:-}" ] && command -v wl-copy >/dev/null 2>&1; then
+            printf %s "$kak_main_reg_dquote" | wl-copy
 
-      face global MenuForeground     rgb:e4e4e4,rgb:52494e
-      face global MenuBackground     rgb:e4e4e4,rgb:282828
-      face global MenuInfo           rgb:ffdd33
+          elif [ -n "''${DISPLAY:-}" ] && command -v xclip >/dev/null 2>&1; then
+            printf %s "$kak_main_reg_dquote" | xclip -selection clipboard -in >/dev/null 2>&1 &
 
-      face global Information        rgb:ffdd33
-      face global Error              rgb:f43841
-      face global StatusLine         rgb:e4e4e4,rgb:282828
-      face global StatusLineMode     rgb:ffdd33
-      face global StatusLineInfo     rgb:96a6c8
-      face global StatusLineValue    rgb:73d936
+          else
+            printf 'kak: no clipboard provider found: install wl-clipboard or xclip\n' >&2
+            exit 1
+          fi
+        }
+      }
 
-      face global Prompt             rgb:ffdd33
-      face global MatchingChar       rgb:ffdd33,rgb:52494e
+      hook global NormalKey y %{
+        copy-yank-to-system-clipboard
+      }
 
-      face global BufferPadding      rgb:52494e
-
-      # Sintaxis
-      face global keyword            rgb:ffdd33
-      face global attribute          rgb:96a6c8
-      face global type               rgb:96a6c8
-      face global string             rgb:73d936
-      face global comment            rgb:52494e
-      face global function           rgb:e4e4e4
-      face global variable           rgb:e4e4e4
-      face global constant           rgb:ffdd33
-      face global operator           rgb:e4e4e4
-      face global meta               rgb:9e95c7
+      # Optional explicit Wayland clipboard shortcuts.
+      # Alt-y: copy current selections directly to system clipboard.
+      # Alt-p: paste system clipboard after cursor.
+      map global normal <a-y> '<a-|>wl-copy<ret>'
+      map global normal <a-p> '<a-!>wl-paste -n<ret>'
     '';
   };
+
+  home.packages = with pkgs; [
+    wl-clipboard
+    xclip
+  ];
 }

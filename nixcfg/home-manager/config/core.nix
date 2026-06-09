@@ -21,6 +21,7 @@
     fastfetch
     btop
     pavucontrol
+    nixd
 
     zoxide
     eza

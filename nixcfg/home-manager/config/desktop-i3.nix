@@ -51,8 +51,7 @@
         # Kill window
         "${modifier}+Shift+q" = "kill";
 
-
-        "${modifier}+s" = "exec scrot -s";
+		"${modifier}+s" = ''exec scrot -s - | xclip -selection clipboard -t image/png'';
 
         # Redshift / Gammastep
         "${modifier}+n" = "exec redshift -O 6000";
