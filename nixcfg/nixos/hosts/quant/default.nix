@@ -15,6 +15,8 @@
     ../../modules/services.nix
     ../../modules/virtualisation.nix
     ../../modules/packages.nix
+
+    #../../modules/gaming.nix
   ];
 
   networking.hostName = "quant";

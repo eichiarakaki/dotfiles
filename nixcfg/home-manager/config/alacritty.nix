@@ -7,7 +7,7 @@
     settings = {
       general = {
         import = [
-          "${./alacritty/themes/solarized_osaka.toml}"
+          "${./alacritty/themes/gruvbox-dark-hard-contrast.toml}"
         ];
 
         live_config_reload = true;

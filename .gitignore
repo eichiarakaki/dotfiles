@@ -1,8 +1,9 @@
 *
 
 !.gitignore
+!README
 
-Q# Nix
+# Nix
 !nixcfg/
 !nixcfg/**
 
