@@ -3,51 +3,49 @@
 {
   xdg.configFile."ghostty/config".text = ''
     # ------------------------------------------------------------
-    # Quant Minimal Ghostty Config
+    # Ghostty - Tomorrow Night Bright
     # ------------------------------------------------------------
 
-    font-family = JetBrains Mono
+    font-family = Iosevka Nerd Font
     font-size = 12
-    font-style-bold = JetBrains Mono Bold
-    font-style-italic = JetBrains Mono Italic
+    font-style-bold = Iosevka Nerd Font Bold
+    font-style-italic = Iosevka Nerd Font Italic
 
     window-padding-x = 13
     window-padding-y = 13
 
     scrollback-limit = 50000
-
     mouse-hide-while-typing = true
 
-    # Shell
-    command = /home/ares/.nix-profile/bin/bash
+    command = ${pkgs.bashInteractive}/bin/bash
 
     # ------------------------------------------------------------
-    # Colors (Quant Minimal theme)
+    # Colors - Tomorrow Night Bright
     # ------------------------------------------------------------
 
-    background = 252221
-    foreground = c8baa4
+    background = 000000
+    foreground = eaeaea
 
-    selection-background = 3d3837
-    selection-foreground = d1c6b4
+    selection-background = 424242
+    selection-foreground = eaeaea
 
-    palette = 0=#3d3837
-    palette = 1=#c65f5f
-    palette = 2=#859e82
-    palette = 3=#d9b27c
-    palette = 4=#829e9b
-    palette = 5=#998396
-    palette = 6=#ab9382
-    palette = 7=#c8baa4
+    palette = 0=#000000
+    palette = 1=#d54e53
+    palette = 2=#b9ca4a
+    palette = 3=#e6c547
+    palette = 4=#7aa6da
+    palette = 5=#c397d8
+    palette = 6=#70c0ba
+    palette = 7=#424242
 
-    palette = 8=#413c3a
-    palette = 9=#d07a7a
-    palette = 10=#9cb598
-    palette = 11=#e4c18c
-    palette = 12=#96b4b0
-    palette = 13=#ad97aa
-    palette = 14=#bba595
-    palette = 15=#d1c6b4
+    palette = 8=#666666
+    palette = 9=#ff3334
+    palette = 10=#9ec400
+    palette = 11=#e7c547
+    palette = 12=#7aa6da
+    palette = 13=#b77ee0
+    palette = 14=#54ced6
+    palette = 15=#2a2a2a
   '';
 
   home.packages = with pkgs; [

@@ -2,7 +2,7 @@
 
 let
   # Change only this line to switch themes.
-  theme = ./kak/themes/gruvbox-dark-hard.kak;
+  theme = ./kak/themes/base16-default-dark.kak;
 in
 {
   programs.kakoune = {

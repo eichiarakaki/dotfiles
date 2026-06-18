@@ -7,7 +7,7 @@
     ./config/core.nix
     ./config/developer.nix
     ./config/env.nix
-    ./config/foot.nix
+    #./config/foot.nix
     #./config/helix.nix
     ./config/kakoune.nix
 
@@ -17,7 +17,9 @@
     # Uncomment ONLY ONE of the two lines below:
 
     #./config/desktop-niri.nix     # ← Niri (Wayland)
-    ./config/desktop-i3.nix     # ← i3 (X11)
+    #./config/desktop-i3.nix     # ← i3 (X11)
+    #./config/emacs.nix
+    ./config/desktop-labwc.nix
   ];
 
   home.username      = "ares";

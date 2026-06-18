@@ -45,6 +45,6 @@
   environment.variables = {
     LIBGL_DRIVERS_PATH = "/run/opengl-driver/lib/dri";
     # Necesario para NVIDIA + wlroots (River): evita crash de cursores HW
-    #WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
   };
 }
