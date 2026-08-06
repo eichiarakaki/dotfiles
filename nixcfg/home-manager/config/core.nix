@@ -11,6 +11,7 @@
     obs-studio
 
     # Productivity
+    spotify
     drawio
     tradingview
 

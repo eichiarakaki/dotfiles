@@ -14,7 +14,7 @@
   home.packages = with pkgs; [
     zellij
     zed-editor-fhs
-    #tmux
+
     #jetbrains.goland
     #jetbrains.rust-rover
     #lazygit
